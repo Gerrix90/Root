@@ -1,5 +1,7 @@
 package com.aaa.gerrix.root;
 
+import android.content.ComponentName;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "Provera";
     private RootManagerHelper packetMennager;
+
+    // Than bind view element
     @BindView(R.id.devicesTV) TextView devicesTv;
     @BindView(R.id.loadClients) Button loadClients;
     @BindView(R.id.clearTV) Button clearTV;
@@ -25,14 +29,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+
+        // First you must bind ButterKnife
         ButterKnife.bind(this);
 
 
          packetMennager = new RootManagerHelper();
 
-
     }
 
+    // Insted of declaring method inside .xml you need just @OnClick annotation to handle events on view element
     @OnClick({R.id.loadClients, R.id.clearTV})
     public void handleClickEvent(View view){
 
